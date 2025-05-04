@@ -88,38 +88,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   loadedProduct.price,
                   1, // Default quantity is 1
                 );
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    backgroundColor: Colors.green,
-                    duration: Duration(seconds: 3),
-                    content: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Added 1 x ${loadedProduct.title} to Cart',
-                            style: TextStyle(color: Colors.white),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pushNamed('/cart');
-                          },
-                          child: Text(
-                            'View Cart',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-
+              _showSnackBar();
                 setState(() {
                   _quantity = 1; // Update quantity to 1 after adding the product to cart
                 });
