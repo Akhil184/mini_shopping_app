@@ -30,12 +30,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   void _increaseQuantity() {
     setState(() {
       _quantity++;
-      // If item is already in cart, update the quantity, else add it
+      // Update the cart with the new quantity
       Provider.of<CartProvider>(context, listen: false).addItem(
         loadedProduct.id,
         loadedProduct.title,
         loadedProduct.price,
-        1,
+        1, // Increment by 1
       );
     });
 
@@ -88,10 +88,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   loadedProduct.price,
                   1, // Default quantity is 1
                 );
-              _showSnackBar();
                 setState(() {
                   _quantity = 1; // Update quantity to 1 after adding the product to cart
                 });
+                _showSnackBar();
               },
               child: Container(
                 alignment: Alignment.center,
@@ -149,7 +149,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             children: [
               Expanded(
                 child: Text(
-                  'Updated $_quantity x ${loadedProduct.title}',
+                  'Added $_quantity x ${loadedProduct.title}', // Display updated quantity
                   style: TextStyle(color: Colors.white, fontSize: 14),
                   overflow: TextOverflow.ellipsis,
                 ),
